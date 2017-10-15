@@ -1,0 +1,102 @@
+caption: Refresh Server
+description: Refresh Server
+menu: Top Right
+tags: Visible [[Menu Icon]] $:/tags/PageControls
+title: Buttons/Refresh Server
+type: text/vnd.tiddlywiki
+
+\define MakeURL()
+<a
+  href='$(URL)$?reload=true'
+>
+  {{$:/core/images/refresh-button}}
+</a>
+\end
+
+\define refreshSetupContents()
+This lets you set up the refresh button!
+
+If you are using ~TiddlyServer than this button can refresh the node server for you so that if any tiddler files have been modified without using tiddlywiki you can click the button and it will allow you to see the new changes.
+
+If you are not using tiddlyserver just select the option using the radio button, if you are using tiddlyserver select the option and put in the URL for the current wiki.
+
+<$radio
+  tiddler='$:/settings/ReloadURL'
+  field='type'
+  value='TiddlyServer'
+>
+  ~TiddlyServer
+</$radio>
+<br>
+<$radio
+  tiddler='$:/settings/ReloadURL'
+  field='type'
+  value='SingleFile'
+>
+  Single File
+</$radio>
+
+<$reveal
+  type='match'
+  state='$:/settings/ReloadURL!!type'
+  text='TiddlyServer'
+>
+  Copy the url for the current wiki and paste it into this field.
+  <$edit-text
+    tiddler='$:/settings/ReloadURL'
+    field='url'
+    class='tc-edit-texteditor'
+    placeholder='Wiki URL'
+  />
+</$reveal>
+
+<$list
+  filter='[[$:/settings/ReloadURL]has[type]type[SingleFile]][[$:/settings/ReloadURL]has[type]type[TiddlyServer]has[url]]'
+  variable=dummy
+>
+  <$button>
+    Finish Setup
+    <$action-setfield
+      $tiddler='$:/temp/Setup Refresh'
+      text=''
+    />
+    <$action-deletetiddler
+      $tiddler='$:/temp/Setup Refresh'
+    />
+  </$button>
+</$list>
+\end
+
+<!--
+<a href='http://127.0.0.1:8080/Test%20Thing/?reload=true'>{{$:/core/images/refresh-button}}</a>
+-->
+<$reveal
+  type=nomatch
+  state='$:/settings/ReloadURL!!url'
+  text=''
+>
+  <$vars
+    URL={{$:/settings/ReloadURL!!url}}
+  >
+    <<MakeURL>>
+  </$vars>
+</$reveal>
+<$reveal
+  type=match
+  state='$:/settings/ReloadURL!!url'
+  text=''
+>
+  <$button>
+    Click ME!
+    <$action-setfield
+      $tiddler='$:/temp/Setup Refresh'
+      text=<<refreshSetupContents>>
+    />
+    <$action-sendmessage
+      $message='tm-close-tiddler'
+    />
+    <$action-navigate
+      $to='$:/temp/Setup Refresh'
+    />
+  </$button>
+</$reveal>

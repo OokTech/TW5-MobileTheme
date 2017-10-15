@@ -1,0 +1,7 @@
+caption: Wiki Title and Subtitle
+menu: Top Center
+order: 1
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/icon/Wiki Title and Subtitle
+
+{{$:/SiteTitle}} -- {{$:/SiteSubtitle}}

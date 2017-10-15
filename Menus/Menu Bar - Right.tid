@@ -1,0 +1,26 @@
+class: tc-rightmenu-wrapper
+tags: [[Icon Menus]] $:/tags/PageTemplate
+title: $:/themes/OokTech/mobile/Right Menu
+type: application/x-tiddler
+
+<div
+  class="tc-rightmenu-wrapper"
+>
+  <div
+    class="tc-page-controls tc-rightmenu"
+  >
+    <!--
+    @@.tc-site-title
+
+    @@
+    -->
+    <$list
+      filter='[tag[Menu Icon]menu[Right]][plugintiddlers[]tag[Menu Icon]menu[Right]]+[nsort[order]]+[tag[Visible]]'
+    >
+
+      <$transclude/>
+
+    </$list>
+
+  </div>
+</div>

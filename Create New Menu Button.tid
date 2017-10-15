@@ -1,0 +1,138 @@
+caption: Create New Menu Button
+tags:
+title: $:/themes/OokTech/mobile/Create New Menu Button
+
+\define thisMakeButtonWikiText()
+<$button
+  class='tc-btn-invisible'
+  to="""$(DestinationTiddler)$"""
+  tooltip="""$(Tooltip)$"""
+>
+  $(Icon)$
+</$button>
+\end
+
+Enter information to create a new icon for the menus. Currently this is only for icons that navigate to an existing tiddler.
+
+Name:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenuButton/NamePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenuButton/NamePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    Name of the tiddler created to define the button
+  </div>
+</$reveal>
+<br>
+<$edit-text
+  tiddler='$:/temp/Create New Menu Button'
+  field='button_name'
+  placeholder='Icon Name'
+/>
+
+Destination:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenuButton/DestinationPopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenuButton/DestinationPopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    Name of the tiddler navigated to
+  </div>
+</$reveal>
+<br>
+<$edit-text
+  tiddler='$:/temp/Create New Menu Button'
+  field='destination'
+  placeholder='Tiddler to Open'
+/>
+
+Tooltip:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenuButton/TooltipPopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenuButton/TooltipPopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    Tooltip for the icon created
+  </div>
+</$reveal>
+<br>
+<$edit-text
+  tiddler='$:/temp/Create New Menu Button'
+  field='tooltip'
+  placeholder='Tooltip'
+/>
+
+Icon:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenuButton/IconPopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenuButton/IconPopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    The icon used for the button. This needs to be whatever wikitext will display the icon, so `{{$:/core/images/right-arrow}}` for {{$:/core/images/right-arrow}}, or `<<fa fa-star>>` for <<fa fa-star>>
+  </div>
+</$reveal>
+<br>
+<$edit-text
+  tiddler='$:/temp/Create New Menu Button'
+  field='icon'
+  placeholder='Icon'
+/>
+(Icon preview: {{$:/temp/Create New Menu Button!!icon}})
+
+Button Preview:
+
+<$vars
+  Icon={{$:/temp/Create New Menu Button!!icon}}
+  Tooltip={{$:/temp/Create New Menu Button!!tooltip}}
+  DestinationTiddler={{$:/temp/Create New Menu Button!!destination}}
+>
+
+  <<thisMakeButtonWikiText>>
+
+  <$button>
+    Create Icon
+    <$action-setfield
+      $tiddler={{$:/temp/Create New Menu Button!!button_name}}
+      text=<<thisMakeButtonWikiText>>
+    />
+    <$action-setfield
+      $tiddler='$:/temp/Create New Menu Button'
+      button_name=''
+      destination=''
+      tooltip=''
+      icon=''
+    />
+  </$button>
+</$vars>

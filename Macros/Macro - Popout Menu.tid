@@ -1,0 +1,28 @@
+tags: $:/tags/Macro
+title: $:/themes/OokTech/mobile/Popout Menu Macro
+
+\define PopoutMenu(Icon Name Tiddler Tooltip PopupClass:"tc-popup-keep tc-popup-menu-default" ButtonClass:"tc-btn-invisible")
+<$button class='$ButtonClass$' popup="$:/state/$Name$" tooltip='$Tooltip$'>$Icon$</$button>
+
+<$reveal type="popup" state="$:/state/$Name$">
+
+<div class='$PopupClass$'>
+<$transclude tiddler="""$Tiddler$""" mode=block/>
+</div>
+
+</$reveal>
+\end
+
+\define PopoutMenuScrollable(Icon Name Tiddler Tooltip PopupClass:"tc-popup-keep tc-popup-menu-default" ButtonClass:"tc-btn-invisible" ScrollClass:'tc-scrollable-menu-default')
+<$button class='$ButtonClass$' popup="$:/state/$Name$" tooltip='$Tooltip$'>$Icon$</$button>
+
+<$reveal type="popup" state="$:/state/$Name$">
+
+<div class='tc-popup-keep $PopupClass$'>
+<$scrollable class='$ScrollClass$'>
+<$transclude tiddler="""$Tiddler$""" mode=block/>
+</$scrollable>
+</div>
+
+</$reveal>
+\end

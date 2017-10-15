@@ -1,0 +1,300 @@
+caption: New Menu
+tags:
+title: $:/themes/OokTech/mobile/New Menu
+
+\define thisMakeMenuMacro()
+
+<<MobileMenu RootTag:"""$(ThisRootTag)$""" MenuName:"""$(ThisMenuName)$""" Type:"""$(ThisMenuType)$""" MenuTitle:"""$(ThisMenuTitle)$""" ShowSubtitle:"""$(ThisShowSubtitle)$""" ShowBody:"""$(ThisShowBody)$""" ListField:"""$(ThisListField)$""">>
+
+\end
+
+\define thisMakeMenuButton()
+<$button>
+  Make Menu
+  <$action-setfield
+    $tiddler="""$(ThisMenuName)$"""
+    text=<<thisMakeMenuMacro>>
+    $(ThisListField)$={{$:/temp/NewMenu!!initial_list}}
+  />
+  <$action-setfield
+    $tiddler='$:/temp/NewMenu'
+    menu_name=''
+    menu_title=''
+    root_tag=''
+    list_field=''
+    initial_list=''
+  />
+</$button>
+\end
+
+Menu Name:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuNamePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuNamePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    Name of the tiddler created to hold the menu, also the name used to determine the state of the menu. This needs to be unique.
+  </div>
+</$reveal>
+<$edit-text
+  tiddler='$:/temp/NewMenu'
+  field='menu_name'
+  placeholder='Menu Name'
+/>
+
+Menu Type:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuTypePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuTypePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    The type of menu created. Table of contents and Selective Expandable TOC act similarly to the normal table of contents macros.
+  </div>
+</$reveal>
+<$select
+  tiddler='$:/state/NewMenu'
+  field='menu_type'
+>
+  <option
+    value=''
+  >
+    --
+  </option>
+  <option>
+    Normal Menu
+  </option>
+  <option>
+    Table of Contents
+  </option>
+  <option>
+    Selective Expandable TOC
+  </option>
+</$select>
+
+Menu Title:
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuTitlePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuTitlePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    This is displayed above the menu. It can be left blank.
+  </div>
+</$reveal>
+<$edit-text
+  tiddler='$:/temp/NewMenu'
+  field='menu_title'
+  placeholder='Menu Title'
+/>
+
+<$checkbox
+  tiddler='$:/temp/NewMenu'
+  field='show_subtitle'
+  checked='Subtitle'
+  unchecked=''
+>
+  Show subtitles
+</$checkbox>
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuShowSubtitlePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuShowSubtitlePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    If this is checked than the subtitle field of the tiddler selected in the menu will display above the rest of the menu items.
+  </div>
+</$reveal>
+<br>
+<$checkbox
+  tiddler='$:/temp/NewMenu'
+  field='show_body'
+  checked='Body'
+  unchecked=''
+>
+  Show tiddler body
+</$checkbox>
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuShowBodyPopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuShowBodyPopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    If this is checked than the main body of the tiddler selected will be displayed along with the menu.
+  </div>
+</$reveal>
+
+<$radio
+  tiddler='$:/temp/NewMenu'
+  field='tag_or_list'
+  value='tag'
+>
+  Tag based
+</$radio>
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuFieldTypePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuFieldTypePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    For this option the menu is structured like the normal table of contents macros using tags to determine what is displayed at each level.
+  </div>
+</$reveal>
+<br>
+<$radio
+  tiddler='$:/temp/NewMenu'
+  field='tag_or_list'
+  value='list'
+>
+  List based
+</$radio>
+<$button
+  class='tc-btn-invisible'
+  popup='$:/state/popup/CreateNewMenu/MenuListTypePopup'
+>
+  ^^(?)^^
+</$button>
+<$reveal
+  type=popup
+  state='$:/state/popup/CreateNewMenu/MenuListTypePopup'
+>
+  <div
+    class='tc-drop-down'
+  >
+    For this option the tiddlers listed under each menu entry are determined by the list of the selected tiddler. The field that holds this list is entered below.
+  </div>
+</$reveal>
+
+<$reveal
+  type='match'
+  state='$:/temp/NewMenu!!tag_or_list'
+  text=tag
+>
+  Root tag:
+  <$edit-text
+    tiddler='$:/temp/NewMenu'
+    field='root_tag'
+  />
+  <$button
+    class='tc-btn-invisible'
+    popup='$:/state/popup/CreateNewMenu/MenuRootTagPopup'
+  >
+    ^^(?)^^
+  </$button>
+  <$reveal
+    type=popup
+    state='$:/state/popup/CreateNewMenu/MenuRootTagPopup'
+  >
+    <div
+      class='tc-drop-down'
+    >
+      The root tag used for creating the menu.
+    </div>
+  </$reveal>
+</$reveal>
+<$reveal
+  type='match'
+  state='$:/temp/NewMenu!!tag_or_list'
+  text=list
+>
+  List field:
+  <$button
+    class='tc-btn-invisible'
+    popup='$:/state/popup/CreateNewMenu/MenuListFieldPopup'
+  >
+    ^^(?)^^
+  </$button>
+  <$reveal
+    type=popup
+    state='$:/state/popup/CreateNewMenu/MenuListFieldPopup'
+  >
+    <div
+      class='tc-drop-down'
+    >
+      The name of the field that holds the list of tiddlers in the menu below the current tiddler.
+    </div>
+  </$reveal>
+  <$edit-text
+    tiddler='$:/temp/NewMenu'
+    field='list_field'
+  />
+  <br>
+  Top level list:
+  <$button
+    class='tc-btn-invisible'
+    popup='$:/state/popup/CreateNewMenu/MenuInitialListPopup'
+  >
+    ^^(?)^^
+  </$button>
+  <$reveal
+    type=popup
+    state='$:/state/popup/CreateNewMenu/MenuInitialListPopup'
+  >
+    <div
+      class='tc-drop-down'
+    >
+      The list of tiddlers for the root of the menu.
+    </div>
+  </$reveal>
+  <$edit-text
+    tiddler='$:/temp/NewMenu'
+    field='initial_list'
+  />
+</$reveal>
+
+<$vars
+  ThisRootTag={{$:/temp/NewMenu!!root_tag}}
+  ThisMenuName={{$:/temp/NewMenu!!menu_name}}
+  ThisMenuType={{$:/state/NewMenu!!menu_type}}
+  ThisMenuTitle={{$:/temp/NewMenu!!menu_title}}
+  ThisShowSubtitle={{$:/temp/NewMenu!!show_subtitle}}
+  ThisShowBody={{$:/temp/NewMenu!!show_body}}
+  ThisListField={{$:/temp/NewMenu!!list_field}}
+>
+
+  <<thisMakeMenuButton>>
+
+</$vars>

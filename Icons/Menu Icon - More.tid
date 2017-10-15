@@ -1,0 +1,13 @@
+caption: More
+menu: Left
+order: 3
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/icon/More
+
+<$macrocall
+  $name=PopoutMenuScrollable
+  Icon="""<<fa fa-ellipsis-h>>"""
+  Name=MoreTiddlersPopoutMenu
+  Tiddler="$:/core/ui/SideBar/More"
+  Tooltip="More"
+/>

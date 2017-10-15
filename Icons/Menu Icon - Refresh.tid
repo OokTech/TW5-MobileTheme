@@ -1,0 +1,7 @@
+caption: Refresh
+menu: Top Right
+order: 6
+tags: [[Menu Icon]]
+title: $:/themes/OokTech/mobile/icon/Refresh
+
+{{$:/core/ui/Buttons/refresh}}

@@ -1,0 +1,35 @@
+caption: Menu Configuration
+tags:
+title: $:/themes/OokTech/mobile/Menu Configuration
+
+Select Menu:
+<$select
+  tiddler='$:/state/MenuConfiguration/SelectedMenu'
+>
+  <option
+    value='$:/themes/OokTech/mobile/Left Menu Options'
+  >
+    Left Menu
+  </option>
+  <option
+    value='$:/themes/OokTech/mobile/Right Menu Options'
+  >
+    Right Menu
+  </option>
+  <option
+    value='$:/themes/OokTech/mobile/Top Menu Options'
+  >
+    Top Menu
+  </option>
+  <option
+    value='$:/themes/OokTech/mobile/Bottom Menu Options'
+  >
+    Bottom Menu
+  </option>
+</$select>
+
+<h1>''<$view tiddler={{$:/state/MenuConfiguration/SelectedMenu}} field='caption'><$view tiddler={{$:/state/MenuConfiguration/SelectedMenu}} field='title'/></$view>''</h1>
+
+<$transclude
+  tiddler={{$:/state/MenuConfiguration/SelectedMenu}} mode=block
+/>

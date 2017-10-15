@@ -1,0 +1,7 @@
+list: [[$:/themes/OokTech/mobile/Create New Tiddler]] [[$:/themes/OokTech/mobile/Create New Task]] [[$:/plugins/OokTech/Contacts/New Contact Form]] [[$:/plugins/OokTech/LibraryTracker/Add Books]] [[$:/plugins/OokTech/Bookmarks/Add Bookmark]]
+tags:
+title: $:/themes/OokTech/mobile/Menu - Create New
+
+@@width:700px;
+<<MobileMenu MenuName:"MenuCreateNew" ShowBody:Body ListField:list MenuTitle:"Create New:">>
+@@

@@ -1,0 +1,45 @@
+bottom_bar_background_color:
+bottom_bar_border: none
+bottom_bar_border_color: green
+bottom_bar_height: 40px
+bottom_bar_hidden_size: -20px
+bottom_bar_text_size: 20px
+bottom_left_menu_font_size: 20px
+bottom_left_menu_left_offset: 10px
+bottom_left_menu_vertical_offset: 0px
+bottom_middle_menu_font_size: 20px
+bottom_middle_menu_left_offset:
+bottom_middle_menu_text_color: black
+bottom_middle_menu_vertical_offset: 0px
+bottom_right_menu_font_size: 20px
+bottom_right_menu_right_offset: 0px
+bottom_right_menu_vertical_offset:
+left_menu_font_size: 20px
+left_menu_left_offset: 10px
+left_menu_text_color: #000000
+left_menu_vertical_offset: -20px
+left_menu_width: 40px
+right_menu_font_size: 20px
+right_menu_right_offset: 0px
+right_menu_text_color: #000000
+right_menu_vertical_offset: -20px
+title: $:/themes/OokTech/mobile/icon_menu_settings
+top_bar_background_color: #191919
+top_bar_border: solid
+top_bar_border_color: #a00000
+top_bar_height: 40px
+top_bar_hidden_size: -25px
+top_bar_text_size: 20px
+top_left_menu_font_size: inherit
+top_left_menu_left_offset: 0px
+top_left_menu_text_color: #000000
+top_left_menu_vertical_offset: 0px
+top_middle_menu_font_size: inherit
+top_middle_menu_left_offset: 0px
+top_middle_menu_text_color: #ffffff
+top_middle_menu_vertical_offset: 0px
+top_right_menu_font_size: inherit
+top_right_menu_left_offset: 0px
+top_right_menu_right_offset: 10px
+top_right_menu_text_color: #0020f0
+top_right_menu_vertical_offset: 0px

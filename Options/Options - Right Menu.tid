@@ -1,0 +1,6 @@
+caption: Right Menu Options
+title: $:/themes/OokTech/mobile/Right Menu Options
+
+Vertical Offset: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='right_menu_vertical_offset'/> (Distance from the bottom of the top bar or top of the screen)<br>
+Font Size: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='right_menu_font_size'/><br>
+Text Color: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='right_menu_text_color'/> <br>

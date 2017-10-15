@@ -1,0 +1,38 @@
+tags: [[Icon Menus]] $:/tags/PageTemplate
+title: $:/themes/OokTech/mobile/BottomBar/menu
+
+<$list
+  filter='[all[]][plugintiddlers[]]+[menu[Bottom Left]][menu[Bottom Center]][menu[Bottom Right]]+[tag[Menu Icon]]+[tag[Visible]]+[limit[1]]'
+>
+  <div
+    class="tc-iconmenubottombar tc-page-controls"
+  >
+    <div
+      class='tc-bottomleftmenu'
+    >
+      <$list
+        filter='[all[]][plugintiddlers[]]+[tag[Menu Icon]menu[Bottom Left]]+[tag[Visible]]+[nsort[order]]'
+      >
+        <$transclude/>
+      </$list>
+    </div>
+    <div
+      class='tc-bottomcentermenu'
+    >
+      <$list
+        filter='[all[]][plugintiddlers[]]+[tag[Menu Icon]menu[Bottom Center]]+[tag[Visible]]+[nsort[order]]'
+      >
+        <$transclude/>
+      </$list>
+    </div>
+    <div
+      class='tc-bottomrightmenu'
+    >
+      <$list
+        filter='[all[]][plugintiddlers[]]+[tag[Menu Icon]menu[Bottom Right]]+[tag[Visible]]+[nsort[order]]'
+      >
+        <$transclude/>
+      </$list>
+    </div>
+  </div>
+</$list>

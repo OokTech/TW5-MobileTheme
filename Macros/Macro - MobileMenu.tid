@@ -1,0 +1,275 @@
+empty_field:
+include_body: Body
+include_subtitle: Subtitle
+include_title:
+normal_menu: Menu
+table_of_contents: TOC
+table_of_contents_selective: TOC-Selective
+tags: $:/tags/Macro
+title: $:/themes/OokTech/mobile/MobileMenu
+
+\define OokTechMobileMenusMakeState(MenuName)
+$:/state/Menu/$MenuName$/$(CurrentTiddler)$
+\end
+
+\define OokTechMobileMenusMakeParentState(MenuName)
+$:/state/Menu/$MenuName$/$(ParentTiddler)$
+\end
+
+\define OokTechMobileMenusEmptyMessage(MenuName MenuType)
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!normal_menu" text=$MenuType$>
+	<$tiddler tiddler={{$:/state/Menu/$MenuName$/current}}>
+		<$button class='tc-btn-invisible'>
+				{{$:/core/images/chevron-left}}
+				''<$view field=caption>
+					<$view field=title/>
+				</$view>''
+				<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=''/>
+		</$button>
+	</$tiddler>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents" text=$MenuType$>
+	<$button class='tc-btn-invisible'>
+		{{$:/core/images/chevron-left}}
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=''/>
+	</$button>
+	<$link to={{$:/state/Menu/$MenuName$/current}}>
+		''<$view tiddler={{$:/state/Menu/$MenuName$/current}} field=caption><$view tiddler='$:/state/Menu/$MenuName$/current' field=text/></$view>''
+	</$link>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents_selective" text=$MenuType$>
+	<$button class='tc-btn-invisible'>
+		{{$:/core/images/chevron-left}}
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=''/>
+	</$button>
+	<$link to={{$:/state/Menu/$MenuName$/current}}>
+		''<$view tiddler={{$:/state/Menu/$MenuName$/current}} field=caption><$view tiddler='$:/state/Menu/$MenuName$/current' field=text/></$view>''
+	</$link>
+	<br>
+</$reveal>
+\end
+
+\define OokTechMobileMenusEmptyMessage2ListItem(MenuName MenuType)
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!normal_menu" text=$MenuType$ tag=span>
+	<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<currentTiddler>>>
+		{{$:/core/images/right-arrow}}<$view tiddler=<<currentTiddler>> field='caption'><$view tiddler=<<currentTiddler>> field='title'/></$view>
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value={{!!title}}/>
+	</$button>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents" text=$MenuType$>
+	<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<currentTiddler>>>
+		{{$:/core/images/right-arrow}}
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value={{!!title}}/>
+	</$button>
+	<$link to=<<currentTiddler>>>
+		<$view tiddler=<<currentTiddler>> field='caption'><$view tiddler=<<currentTiddler>> field='title'/></$view>
+	</$link>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents_selective" text=$MenuType$>
+	<$list filter='[tag{!!title}limit[1]]' variable=dummy>
+		<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<currentTiddler>>>
+			{{$:/core/images/right-arrow}}
+			<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value={{!!title}}/>
+		</$button>
+	</$list>
+	<$link to=<<currentTiddler>>>
+		<$view tiddler=<<currentTiddler>> field='caption'><$view tiddler=<<currentTiddler>> field='title'/></$view>
+	</$link>
+	<br>
+</$reveal>
+\end
+
+\define OokTechMobileMenusEmptyMessage2(MenuName MenuType ListField)
+<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+	<$list filter='[tag<CurrentTiddler>]'>
+		<<OokTechMobileMenusEmptyMessage2ListItem """$MenuName$""" """$MenuType$""">>
+	</$list>
+</$reveal>
+<$reveal type='nomatch' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+	<$tiddler tiddler={{$:/state/Menu/$MenuName$/current}}>
+		<$list filter='[list[!!$ListField$]]'>
+			<<OokTechMobileMenusEmptyMessage2ListItem """$MenuName$""" """$MenuType$""">>
+		</$list>
+	</$tiddler>
+</$reveal>
+\end
+
+\define OokTechMobileMenusTemplateListItemTOCSelectiveIsSpecial(MenuName MenuType ListField)
+<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+	<$list filter='[tag<ThisTiddler2>limit[1]]' variable=dummy>
+		<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<ThisTiddler2>>>
+			{{$:/core/images/right-arrow}}
+			<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ThisTiddler2>>/>
+		</$button>
+	</$list>
+</$reveal>
+<$reveal type='nomatch' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+	<$tiddler tiddler={{$:/state/Menu/$MenuName$/current}}>
+		<$list filter='[list[!!$ListField$]limit[1]]' variable=dummy>
+			<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<ThisTiddler2>>>
+				{{$:/core/images/right-arrow}}
+				<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ThisTiddler2>>/>
+			</$button>
+		</$list>
+	</$tiddler>
+</$reveal>
+\end
+
+\define OokTechMobileMenusTemplateListItem(MenuName MenuType ListField)
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!normal_menu" text=$MenuType$>
+	<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<ThisTiddler2>>>
+		{{$:/core/images/right-arrow}}<$view tiddler=<<ThisTiddler2>> field='caption'><$view tiddler=<<ThisTiddler2>> field='title'/></$view>
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ThisTiddler2>>/>
+	</$button>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents" text=$MenuType$>
+	<$button class='tc-btn-invisible' set=<<OokTechMobileMenusMakeState """$MenuName$""">> setTo=<<ThisTiddler2>>>
+		{{$:/core/images/right-arrow}}
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ThisTiddler2>>/>
+	</$button>
+	<$link to=<<ThisTiddler2>>>
+		<$view tiddler=<<ThisTiddler2>> field='caption'><$view tiddler=<<ThisTiddler2>> field='title'/></$view>
+	</$link>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents_selective" text=$MenuType$>
+	<<OokTechMobileMenusTemplateListItemTOCSelectiveIsSpecial """$MenuName$""" """$MenuType$""" """$ListField$""">>
+	<$link to=<<ThisTiddler2>>>
+		<$view tiddler=<<ThisTiddler2>> field='caption'><$view tiddler=<<ThisTiddler2>> field='title'/></$view>
+	</$link>
+	<br>
+</$reveal>
+\end
+
+\define OokTechMobileMenusTemplate(MenuName MenuType ListField)
+<$set name=CurrentTiddler value={{$:/state/Menu/$MenuName$/current}}>
+	<$list filter='[text<CurrentTiddler>removeprefix[$:/state/Menu/$MenuName$/]]-[[current]]+[limit[1]]' variable=ParentTiddler emptyMessage=<<OokTechMobileMenusEmptyMessage2 """$MenuName$""" """$MenuType$""" """$ListField$""">>>
+		<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+			<$list filter='[tag<CurrentTiddler>]' variable=ThisTiddler2>
+				<<OokTechMobileMenusTemplateListItem """$MenuName$""" """$MenuType$""" """$ListField$""">>
+			</$list>
+		</$reveal>
+		<$reveal type='nomatch' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+			<$tiddler tiddler={{$:/state/Menu/$MenuName$/current}}>
+				<$list filter='[list[!!$ListField$]]' variable=ThisTiddler2>
+					<<OokTechMobileMenusTemplateListItem """$MenuName$""" """$MenuType$""" """$ListField$""">>
+				</$list>
+			</$tiddler>
+		</$reveal>
+	</$list>
+</$set>
+\end
+
+\define OokTechMobileMenusRootListEntry(MenuName MenuType)
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!normal_menu" text=$MenuType$>
+	<$button class='tc-btn-invisible' set='$:/state/Menu/$MenuName$/current' setTo={{!!title}}>
+		{{$:/core/images/right-arrow}}<$view field='caption'><$view field='title'/></$view>
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value={{!!title}}/>
+	</$button>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents" text=$MenuType$>
+	<$button class='tc-btn-invisible' set='$:/state/Menu/$MenuName$/current' setTo={{!!title}}>
+		{{$:/core/images/right-arrow}}
+		<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value={{!!title}}/>
+	</$button>
+	<$link>
+		<$view field='caption'><$view field='title'/></$view>
+	</$link>
+	<br>
+</$reveal>
+<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents_selective" text=$MenuType$>
+	<$list filter='[tag{!!title}limit[1]]' variable=dummy>
+		<$button class='tc-btn-invisible' set='$:/state/Menu/$MenuName$/current' setTo={{!!title}}>
+			{{$:/core/images/right-arrow}}
+			<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value={{!!title}}/>
+		</$button>
+	</$list>
+	<$link>
+		<$view field='caption'><$view field='title'/></$view>
+	</$link>
+	<br>
+</$reveal>
+\end
+
+\define MobileMenu(RootTag:"RootTag" MenuName:Menu MenuType:Menu MenuTitle:"" ShowSubtitle:no ShowBody:no ListField:"")
+<$reveal type=nomatch state="""$:/themes/OokTech/mobile/MobileMenu!!include_title""" text="""$MenuTitle$""">
+	$MenuTitle$
+</$reveal>
+
+<$reveal type='match' state='$:/state/Menu/$MenuName$/current' text=''>
+	<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+		<$list filter='[tag[$RootTag$]]'>
+			<<OokTechMobileMenusRootListEntry """$MenuName$""" """$MenuType$""">>
+		</$list>
+	</$reveal>
+	<$reveal type='nomatch' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+		<$list filter={{!!$ListField$}}>
+			<<OokTechMobileMenusRootListEntry """$MenuName$""" """$MenuType$""">>
+		</$list>
+	</$reveal>
+</$reveal>
+
+<$reveal type='nomatch' state='$:/state/Menu/$MenuName$/current' text=''>
+	<$list filter='[is[system]prefix[$:/state/Menu/$MenuName$/]has[text]]-[[$:/state/Menu/$MenuName$/current]]+[limit[1]]' emptyMessage=<<OokTechMobileMenusEmptyMessage """$MenuName$""" """$MenuType$""">>> </$list>
+	<$list filter='[text{$:/state/Menu/$MenuName$/current}removeprefix[$:/state/Menu/$MenuName$/]]-[[current]]+[limit[1]]' variable=ParentTiddler>
+		<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!normal_menu" text=$MenuType$>
+			<$button class='tc-btn-invisible' style='text-align:left'>
+				{{$:/core/images/chevron-left}}
+				''<$view tiddler={{$:/state/Menu/$MenuName$/current}} field=caption><$view tiddler={{$:/state/Menu/$MenuName$/current}} field=title/></$view>''
+				<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ParentTiddler>>/>
+				<$action-setfield $tiddler=<<OokTechMobileMenusMakeParentState """$MenuName$""">> $value=''/>
+			</$button>
+			<br>
+		</$reveal>
+		<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents" text=$MenuType$>
+			<$button class='tc-btn-invisible'>
+				{{$:/core/images/chevron-left}}
+				<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ParentTiddler>>/>
+				<$action-setfield $tiddler=<<OokTechMobileMenusMakeParentState """$MenuName$""">> $value=''/>
+			</$button>
+			<$link to={{$:/state/Menu/$MenuName$/current}}>
+				''<$view tiddler={{$:/state/Menu/$MenuName$/current}} field=caption><$view tiddler={{$:/state/Menu/$MenuName$/current}} field=title/></$view>''
+			</$link>
+			<br>
+		</$reveal>
+		<$reveal type='match' state="$:/themes/OokTech/mobile/MobileMenu!!table_of_contents_selective" text=$MenuType$>
+			<$button class='tc-btn-invisible'>
+				{{$:/core/images/chevron-left}}
+				<$action-setfield $tiddler='$:/state/Menu/$MenuName$/current' $value=<<ParentTiddler>>/>
+				<$action-setfield $tiddler=<<OokTechMobileMenusMakeParentState """$MenuName$""">> $value=''/>
+			</$button>
+			<$link to={{$:/state/Menu/$MenuName$/current}}>
+				''<$view tiddler={{$:/state/Menu/$MenuName$/current}} field=caption><$view tiddler={{$:/state/Menu/$MenuName$/current}} field=title/></$view>''
+			</$link>
+			<br>
+		</$reveal>
+	</$list>
+
+	<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!include_subtitle' text=$ShowSubtitle$>
+		<$transclude tiddler={{$:/state/Menu/$MenuName$/current}} field='subtitle' mode=block/>
+	</$reveal>
+
+	<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+		<$list filter='[tag{$:/state/Menu/$MenuName$/current}limit[1]]' variable=ThisTiddler>
+			<<OokTechMobileMenusTemplate """$MenuName$""" """$MenuType$""" """$ListField$""">>
+		</$list>
+	</$reveal>
+	<$reveal type='nomatch' state='$:/themes/OokTech/mobile/MobileMenu!!empty_field' text="""$ListField$""">
+		<$tiddler tiddler={{$:/state/Menu/$MenuName$/current}}>
+			<$list filter='[list[!!$ListField$]limit[1]]' variable=ThisTiddler>
+				<<OokTechMobileMenusTemplate """$MenuName$""" """$MenuType$""" """$ListField$""">>
+			</$list>
+		</$tiddler>
+	</$reveal>
+
+	<$reveal type='match' state='$:/themes/OokTech/mobile/MobileMenu!!include_body' text=$ShowBody$>
+		<$transclude tiddler={{$:/state/Menu/$MenuName$/current}} mode=block/>
+	</$reveal>
+</$reveal>
+\end

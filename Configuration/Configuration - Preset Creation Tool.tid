@@ -1,0 +1,139 @@
+caption: Preset Creation Tool
+title: $:/themes/OokTech/mobile/Preset Creation Tool
+
+\define MenuList() [[Top Left]] [[Top Center]] [[Top Right]] Left Right [[Bottom Righ]] [[Bottom Middle]] [[Bottom Left]]
+
+\define thisSelectMenu()
+<$select
+  tiddler='$:/temp/icon/$(currentTiddler)$/selectedmenu'
+>
+  <$list
+    filter=<<MenuList>>
+  >
+    <option>
+      <<currentTiddler>>
+    </option>
+  </$list>
+</$select>
+\end
+
+Presets are made using data tiddlers, each index should be in the form `Tiddler Name:Menu Name`, which will set the tiddler named `Tiddler Name` to the menu `Menu Name`. Valid menu names are: `Top Left` `Top Center` `Top Right` `Right` `Bottom Left` `Bottom Right` `Bottom Center` `Left`.
+
+First make the preset, then add things to it.
+
+Preset name:
+<$edit-text
+  tiddler='$:/temp/createpreset/presetname'
+  field='preset_name'
+  class='tc-edit-texteditor'
+/>
+
+<$button>
+  Make Preset
+  <$action-setfield
+    $tiddler={{$:/temp/createpreset/presetname!!preset_name}}
+    type='application/json'
+    tags='[[Mobile Theme Preset]]'
+  />
+  <$action-setfield
+    $tiddler='$:/temp/createpreset/presetname'
+    preset_name=''
+  />
+</$button>
+
+
+Select preset:
+<$select
+  tiddler='$:/state/createpreset/selectedpreset'
+>
+  <$list
+    filter='[all[]tag[Mobile Theme Preset]][plugintiddlers[]tag[Mobile Theme Preset]]'
+  >
+    <option
+      value=<<currentTiddler>>
+    >
+      <$view
+        field='caption'
+      >
+        <$view
+          field='title'
+        />
+      </$view>
+    </option>
+  </$list>
+</$select>
+
+Icon:
+<$select
+  tiddler='$:/state/createpreset/selectedicon'
+>
+  <$list
+    filter='[all[]tag[Menu Icon]][plugintiddlers[]tag[Menu Icon]]'
+  >
+    <option
+      value=<<currentTiddler>>
+    >
+      <$view
+        field='caption'
+      >
+        <$view
+          field='title'
+        />
+      </$view>
+    </option>
+  </$list>
+</$select>
+
+Menu:
+<$select
+  tiddler='$:/state/createpreset/selectedmenu'
+>
+  <$list
+    filter=<<MenuList>>
+  >
+    <option>
+      <<currentTiddler>>
+    </option>
+  </$list>
+</$select>
+
+<$button>
+  Add to preset
+  <$action-setfield
+    $tiddler={{$:/state/createpreset/selectedpreset}}
+    $index={{$:/state/createpreset/selectedicon}}
+    $value={{$:/state/createpreset/selectedmenu}}
+  />
+</$button>
+
+<table>
+  <tr>
+    <th>
+      Icon Name
+    </th>
+    <th>
+      Menu
+    </th>
+  </tr>
+  <$list
+    filter='[{$:/state/createpreset/selectedpreset}indexes[]]'
+  >
+    <tr>
+      <td>
+        <$view
+          tiddler=<<currentTiddler>>
+          field=caption
+        >
+          <$view
+            field='title'
+          />
+        </$view>
+      </td>
+      <td>
+        <$list
+          filter='[{$:/state/createpreset/selectedpreset}getindex<currentTiddler>]'
+        />
+      </td>
+    </tr>
+  </$list>
+</table>

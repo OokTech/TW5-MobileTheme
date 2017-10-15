@@ -1,0 +1,227 @@
+caption: Icon Placement
+tags:
+title: $:/themes/OokTech/mobile/Icon Placement
+
+\define thisSelectMenuPlacement()
+<$select
+  field=menu
+>
+  <$reveal
+    type='nomatch'
+    state='!!title'
+    text='$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout'
+  >
+    <option
+      value=''
+    >
+      --
+    </option>
+  </$reveal>
+  <$list
+    filter='[[Top Left]] [[Top Center]] [[Top Right]] [[Right]] [[Bottom Left]] [[Bottom Right]] [[Bottom Center]] [[Left]]'
+  >
+    <option>
+      <<currentTiddler>>
+    </option>
+  </$list>
+</$select>
+\end
+
+Enable Icon:
+
+<$select
+  tiddler='$:/state/IconPlacemet/IconSelected'
+>
+  <$list
+    filter='[tag[Menu Icon]][plugintiddlers[]tag[Menu Icon]]+[sort[title]]-[[$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout]]'
+  >
+    <option
+      value={{!!title}}
+    >
+      <$view
+        field='caption'
+      >
+        <$view
+          field='title'
+        />
+      </$view>
+    </option>
+  </$list>
+</$select>
+<$checkbox
+  tiddler={{$:/state/IconPlacemet/IconSelected}}
+  tag=Visible
+>
+  Enabled
+</$checkbox>
+
+
+<h1>Currently Used Icons:</h1>
+
+<$list
+  filter='[[Left]] [[Right]] [[Top Left]] [[Top Center]] [[Top Right]] [[Bottom Left]] [[Bottom Right]] [[Bottom Center]]'
+  variable=CurrentMenu
+>
+
+  <$list
+    filter='[tag[Menu Icon]tag[Visible]nsort[order]][plugintiddlers[]tag[Visible]tag[Menu Icon]nsort[order]]+[menu<CurrentMenu>]+[limit[1]]'
+  >
+    ''<$view tiddler=<<CurrentMenu>> field=title/> Menu Icons:''
+
+    <hr>
+
+    <table>
+      <tr>
+        <th>
+          Enabled
+        </th>
+        <th>
+          Location
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Order
+        </th>
+      </tr>
+      <$list
+        filter='[tag[Menu Icon]tag[Visible]nsort[order]][plugintiddlers[]tag[Visible]tag[Menu Icon]nsort[order]]+[menu<CurrentMenu>]'
+      >
+        <tr>
+          <td>
+            <$reveal
+              type='nomatch'
+              state='!!title'
+              text='$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout'
+            >
+              <$checkbox
+                tag=Visible
+              >
+                Enabled
+              </$checkbox>
+            </$reveal>
+          </td>
+          <td>
+            <<thisSelectMenuPlacement>>
+          </td>
+          <td>
+            <$link
+              to=<<currentTiddler>>
+            >
+              <$view
+                field=caption
+              >
+                <$view
+                  field='title'
+                />
+              </$view>
+            </$link>
+          </td>
+          <td>
+            <$button
+              set="!!order"
+              setTo=<<calc !!order 1>>
+              class="tc-btn-invisible"
+            >
+              {{$:/core/images/chevron-down}}
+            </$button>
+            <$button
+              set="!!order"
+              setTo=<<calc !!order -1 0>>
+              class="tc-btn-invisible"
+            >
+              {{$:/core/images/chevron-up}}
+            </$button>
+            <$edit-text
+              field='order'
+              placeholder='Order'
+              size=4
+            />
+          </td>
+        </tr>
+      </$list>
+    </table>
+  </$list>
+</$list>
+
+<$list
+  filter='[tag[Menu Icon]tag[Visible]nsort[order]][plugintiddlers[]tag[Visible]tag[Menu Icon]nsort[order]]+[!has[menu]]+[limit[1]]'
+>
+
+  ''No Menu:''
+
+  <table>
+    <tr>
+      <th>
+        Enabled
+      </th>
+      <th>
+        Location
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Order
+      </th>
+    </tr>
+    <$list
+      filter='[tag[Menu Icon]tag[Visible]nsort[order]][plugintiddlers[]tag[Visible]tag[Menu Icon]nsort[order]]+[!has[menu]]'
+    >
+      <tr>
+        <td>
+          <$reveal
+            type='nomatch'
+            state='!!title'
+            text='$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout'
+          >
+            <$checkbox
+              tag=Visible
+            >
+              Enabled
+            </$checkbox>
+          </$reveal>
+        </td>
+        <td>
+          <<thisSelectMenuPlacement>>
+        </td>
+        <td>
+          <$link
+            to=<<currentTiddler>>
+          >
+            <$view
+              field=caption
+            >
+              <$view
+                field='title'
+              />
+            </$view>
+          </$link>
+        </td>
+        <td>
+          <$button
+            set="!!order"
+            setTo=<<calc !!order 1>>
+            class="tc-btn-invisible"
+          >
+            {{$:/core/images/chevron-down}}
+          </$button>
+          <$button
+            set="!!order"
+            setTo=<<calc !!order -1 0>>
+            class="tc-btn-invisible"
+          >
+            {{$:/core/images/chevron-up}}
+          </$button>
+          <$edit-text
+            field='order'
+            placeholder='Order'
+            size=4
+          />
+        </td>
+      </tr>
+    </$list>
+  </table>
+
+</$list>

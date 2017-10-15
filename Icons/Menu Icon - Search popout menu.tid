@@ -1,0 +1,13 @@
+caption: Advanced Search Popout Menu
+menu: Left
+order: 2
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/icon/Search popout menu
+
+<$macrocall
+  $name=PopoutMenuScrollable
+  Icon="""<<fa fa-search-plus>>"""
+  Name=AdvancedSearchPopoutMenu
+  Tiddler="$:/AdvancedSearch"
+  Tooltip="Advanced Search"
+/>

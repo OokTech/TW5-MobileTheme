@@ -1,0 +1,7 @@
+caption: Full Screen
+menu: Top Left
+order: 12
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/icon/Full Screen
+
+{{$:/core/ui/Buttons/full-screen}}

@@ -1,0 +1,14 @@
+caption: Create New
+list: [[$:/themes/OokTech/mobile/Create New Tiddler]] [[$:/themes/OokTech/mobile/Create New Task]] [[$:/themes/OokTech/mobile/Create New Menu Button]] [[$:/themes/OokTech/mobile/New Menu]]
+menu: Left
+order: 0
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/Icon Menu - Create New
+
+<$macrocall
+  $name=PopoutMenuScrollable
+  Icon="""<<fa fa-plus>>"""
+  Name=CreateNew
+  Tiddler="$:/themes/OokTech/mobile/Menu - Create New"
+  Tooltip="Make New Stuff"
+/>

@@ -1,0 +1,38 @@
+tags: [[Icon Menus]] $:/tags/TopRightBar
+title: $:/themes/OokTech/mobile/TopBar Menu
+
+<$list
+  filter='[all[]][plugintiddlers[]]+[menu[Top Left]][menu[Top Center]][menu[Top Right]]+[tag[Visible]]+[tag[Menu Icon]]+[limit[1]]'
+>
+  <div
+    class="tc-iconmenutopbar"
+  >
+    <div
+      class='tc-topleftmenu'
+    >
+      <$list
+        filter='[all[]][plugintiddlers[]]+[tag[Menu Icon]menu[Top Left]][plugintiddlers[]tag[Menu Icon]menu[Top Left]]+[tag[Visible]]+[nsort[order]]'
+      >
+        <$transclude/>
+      </$list>
+    </div>
+    <div
+      class='tc-topcentermenu'
+    >
+      <$list
+        filter='[all[]][plugintiddlers[]]+[tag[Menu Icon]menu[Top Center]][plugintiddlers[]tag[Menu Icon]menu[Top Center]]+[tag[Visible]]+[nsort[order]]'
+      >
+        <$transclude/>
+      </$list>
+    </div>
+    <div
+      class='tc-toprightmenu'
+    >
+      <$list
+        filter='[all[]][plugintiddlers[]]+[tag[Menu Icon]menu[Top Right]][plugintiddlers[]tag[Menu Icon]menu[Top Right]]+[tag[Visible]]+[nsort[order]]'
+      >
+        <$transclude/>
+      </$list>
+    </div>
+  </div>
+</$list>

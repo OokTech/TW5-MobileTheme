@@ -1,0 +1,99 @@
+caption: Menu Presets
+title: $:/themes/OokTech/mobile/Menu Presets
+
+Presets are predefined layouts for the icon menus for the mobile theme. They allow you to use the theme with multiple devices that have different screen sizes or other layout concerns.
+
+There is a [[preset creation tool|$:/themes/OokTech/mobile/Preset Creation Tool]].
+
+Select Preset:
+<$select
+  tiddler='$:/state/MobileThemeSettings/SelectedPreset'
+>
+  <$list
+    filter='[all[]][plugintiddlers[]]+[tag[Mobile Theme Preset]]'
+  >
+    <option
+      value=<<currentTiddler>>
+    >
+      <$view
+        field='caption'
+      >
+        <$view
+          field='title'
+        />
+      </$view>
+    </option>
+  </$list>
+</$select>
+
+<$button>
+  Apply Preset
+  <$list
+    filter='[all[]tag[Menu Icon]][plugintiddlers[]tag[Menu Icon]]-[[$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout]]'
+  >
+    <$action-setfield
+      $field='menu'
+      $value=''
+    />
+    <$fieldmangler>
+      <$action-sendmessage
+        $message='tm-remove-tag'
+        $param='Visible'
+      />
+    </$fieldmangler>
+  </$list>
+  <$list
+    filter='[{$:/state/MobileThemeSettings/SelectedPreset}indexes[]]'
+    variable=CurrentIcon
+  >
+    <$list
+      filter='[{$:/state/MobileThemeSettings/SelectedPreset}getindex<CurrentIcon>]'
+      variable=CurrentMenu
+    >
+      <$action-setfield
+        $tiddler=<<CurrentIcon>>
+        menu=<<CurrentMenu>>
+      />
+      <$fieldmangler
+        tiddler=<<CurrentIcon>>
+      >
+        <$action-sendmessage
+          $message='tm-add-tag'
+          $param='Visible'
+        />
+      </$fieldmangler>
+    </$list>
+  </$list>
+  <$list
+    filter='[[$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout]!has[menu]]'
+  >
+    <$action-setfield
+      $tiddler='$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout'
+      menu=Left
+    />
+  </$list>
+</$button>
+
+
+This resets the menu state to be empty aside from the control panel:
+<$button>
+  Clear Menu Settings
+  <$list
+    filter='[all[]tag[Menu Icon]][plugintiddlers[]tag[Menu Icon]]-[[$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout]]'
+  >
+    <$action-setfield
+      $field='menu'
+      $value=''
+    />
+    <$fieldmangler>
+      <$action-sendmessage
+        $message='tm-remove-tag'
+        $param='Visible'
+      />
+    </$fieldmangler>
+  </$list>
+  <$action-setfield
+    $tiddler='$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout'
+    menu=Left
+  />
+</$button>

@@ -1,0 +1,7 @@
+caption: Home
+menu: Top Center
+order: 0
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/icon/Home
+
+{{$:/core/ui/Buttons/home}}

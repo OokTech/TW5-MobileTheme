@@ -1,0 +1,12 @@
+caption: Open Tiddlers
+order: 0
+tags: [[Menu Icon]]
+title: $:/themes/OokTech/mobile/icon/Open Tiddlers
+
+<$macrocall
+  $name=PopoutMenuScrollable
+  Icon="""<<fa fa-folder-open-o>>"""
+  Name=OpenTiddlersPopoutMenu
+  Tiddler="$:/core/ui/SideBar/Open"
+  Tooltip="Open Tiddlers"
+/>

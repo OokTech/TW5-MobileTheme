@@ -1,0 +1,11 @@
+caption: Top Menu Options
+title: $:/themes/OokTech/mobile/Top Menu Options
+
+Top Bar Height: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_bar_height'/><br>
+Top Bar Background Color: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_bar_background_color'/><br>
+Show Top Bar Border: <$checkbox tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_bar_border' checked=solid unchecked=none/><br>
+Top Bar Border Color: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_bar_border_color'/><br>
+Top Bar Text Size: <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_bar_text_size'/><br>
+Text Color (Top left): <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_left_menu_text_color'/><br>
+Text Color (Top center): <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_middle_menu_text_color'/><br>
+Text Color (Top right): <$edit-text tiddler='$:/themes/OokTech/mobile/icon_menu_settings' field='top_right_menu_text_color'/>

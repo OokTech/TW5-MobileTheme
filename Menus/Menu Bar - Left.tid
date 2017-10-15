@@ -1,0 +1,28 @@
+tags: [[Icon Menus]] $:/tags/PageTemplate
+title: $:/themes/OokTech/mobile/Left Menu
+type: application/x-tiddler
+
+<div
+  class='tc-leftmenu-wrapper'
+>
+  <div
+    class="tc-leftmenu tc-page-controls"
+  >
+  <!--
+    @@.tc-site-title
+
+    @@
+    -->
+
+    <$list
+      filter='[tag[Menu Icon]menu[Left]][plugintiddlers[]tag[Menu Icon]menu[Left]]+[nsort[order]]+[tag[Visible]]'
+    >
+
+      <$transclude
+        mode=block
+      />
+
+    </$list>
+
+  </div>
+</div>

@@ -1,0 +1,15 @@
+caption: No Topbar
+tags: [[Mobile Theme Preset]]
+title: $:/themes/OokTech/mobile/Preset - No Topbar
+type: application/json
+
+{
+    "$:/themes/OokTech/mobile/Icon Menu - Create New": "Left",
+    "$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout": "Left",
+    "$:/themes/OokTech/mobile/icon/Search popout menu": "Left",
+    "$:/themes/OokTech/mobile/icon/More": "Left",
+    "$:/themes/OokTech/mobile/icon/Full Screen": "Left",
+    "$:/themes/OokTech/mobile/icon/Home": "Right",
+    "$:/themes/OokTech/mobile/icon/Save Wiki": "Right",
+    "$:/themes/OokTech/mobile/icon/Refresh": "Right"
+}

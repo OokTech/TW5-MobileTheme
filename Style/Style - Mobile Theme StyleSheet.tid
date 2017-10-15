@@ -1,0 +1,197 @@
+tags: $:/tags/Stylesheet
+title: $:/themes/OokTech/mobile/Mobile Theme StyleSheet
+
+/* STORY-RIVER */
+
+.tc-tiddler-frame { width: 100%; }
+
+.tc-story-river { position: relative; left: 0px; top: 0px; width: auto; padding: 42px 42px 42px 42px; }
+
+/* LEFT MENU */
+
+html .tc-leftmenu {
+    display: block;
+    padding: {{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_height}} 0px 0px 0px;
+    position: fixed;
+    left: {{$:/themes/OokTech/mobile/icon_menu_settings!!left_menu_left_offset}};
+    top: {{$:/themes/OokTech/mobile/icon_menu_settings!!left_menu_vertical_offset}};
+    width: {{$:/themes/OokTech/mobile/icon_menu_settings!!left_menu_width}};
+    z-index: 999;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!left_menu_text_color}};
+    font-size:{{$:/themes/OokTech/mobile/icon_menu_settings!!left_menu_font_size}};
+}
+
+/* RIGHT MENU */
+
+html .tc-rightmenu {
+    display: block;
+    padding: {{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_height}} 0px 0px 0px;
+    position: fixed;
+    right: {{$:/themes/OokTech/mobile/icon_menu_settings!!right_menu_right_offset}};
+    top: {{$:/themes/OokTech/mobile/icon_menu_settings!!right_menu_vertical_offset}};
+    width: {{$:/themes/OokTech/mobile/icon_menu_settings!!right_menu_width}};
+    z-index: 998;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!right_menu_text_color}};
+    font-size:{{$:/themes/OokTech/mobile/icon_menu_settings!!right_menu_font_size}};
+    opacity: 1;
+}
+
+/* TOP BAR */
+
+html .tc-iconmenutopbar {
+    display:block;
+    width:100%;
+    position:fixed;
+    text-align:center;
+    line-width:100%;
+    left:0%;
+    top:0px;
+    background-color:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_background_color}};
+    font-size:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_text_size}};
+    border-bottom-style:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_border}};
+    border-bottom-color:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_border_color}};
+    height:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_height}};
+    line-height:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_bar_height}};
+    overflow: hidden;
+    z-index: 970;
+}
+
+html .tc-topleftmenu {
+    display: block;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: inherit;
+    z-index: 9199;
+    border-bottom-style: none;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_left_menu_text_color}};
+    height: inherit;
+    overflow: inherit;
+    text-align: left;
+}
+
+html .tc-topcentermenu {
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: inherit;
+    z-index: 999;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_middle_menu_text_color}};
+    line-height: inherit;
+    height: inherit;
+    overflow: inherit;
+}
+
+html .tc-toprightmenu {
+    display: block;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: inherit;
+    z-index: 999;
+    border-bottom-style: none;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!top_right_menu_text_color}};
+    height: inherit;
+    overflow: inherit;
+    text-align: right;
+    right:0px;
+}
+
+/* BOTTOM BAR */
+
+html .tc-iconmenubottombar {
+    display:block;
+    width:100%;
+    position:fixed;
+    text-align:center;
+    line-width:100%;
+    left:0%;
+    bottom: 0px;
+    background-color:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_bar_background_color}};
+    font-size:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_bar_text_size}};
+    border-top-style:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_bar_border}};
+    border-top-color:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_bar_border_color}};
+    height:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_bar_height}};
+    line-height:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_bar_height}};
+    overflow: hidden;
+    z-index: 970;
+}
+
+html .tc-bottomrightmenu {
+    display: block;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    bottom: inherit;
+    z-index: 99;
+    border-bottom-style: none;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_right_menu_text_color}};
+    height: inherit;
+    overflow: inherit;
+    text-align: right;
+}
+
+html .tc-bottomcentermenu {
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    z-index: 999;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_middle_menu_text_color}};
+    line-height: inherit;
+    height: inherit;
+    overflow: inherit;
+}
+
+html .tc-bottomleftmenu {
+    display: block;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    z-index: 9199;
+    border-top-style: none;
+    color:{{$:/themes/OokTech/mobile/icon_menu_settings!!bottom_left_menu_text_color}};
+    height: inherit;
+    overflow: inherit;
+    text-align: left;
+}
+
+/* Popout Menus */
+
+.tc-scrollable-menu-default {
+    left:2em;
+	background-color: white;
+	padding: 1em;
+    width:75vw;
+    max-width:700px;
+	height: 98vh;
+    text-align:left;
+    position: fixed;
+    z-index: 999;
+}
+
+.tc-popup-menu-default {
+    left:2em;
+    top:1em;
+    background: white;
+    height: 98vh;
+    border:solid;
+    border-color:lightgrey;
+    border-width:1px;
+    width:75vw;
+    max-width:700px;
+    height:75vh;
+    text-align:left;
+    position: fixed;
+    z-index: 999;
+}
+
+.tc-popup-menu-block {
+    background: white;
+    border:solid;
+    border-color:lightgrey;
+    border-width:1px;
+    left:2em;
+    text-align:left;
+    position: fixed;
+    z-index: 999;
+}

@@ -1,0 +1,9 @@
+{
+	"title": "$:/themes/OokTech/Mobile",
+	"name": "Mobile",
+	"author": "OokTech",
+	"core-version": ">=5.0.0",
+	"version": "0.0.2",
+	"plugin-type": "theme",
+	"description": "Theme for mobile devices"
+}

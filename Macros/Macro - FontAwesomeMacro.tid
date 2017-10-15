@@ -1,0 +1,30 @@
+tags: $:/tags/Macro
+title: $:/themes/OokTech/mobile/FontAwesomeMacro
+
+\define fa(iconName)
+<i class="fa $iconName$"></i>
+\end
+
+\define falg(iconName)
+<i class="fa $iconName$ fa-lg"></i>
+\end
+
+\define fa2x(iconName)
+<i class="fa $iconName$ fa-2x"></i>
+\end
+
+\define fa3x(iconName)
+<i class="fa $iconName$ fa-3x"></i>
+\end
+
+\define fa4x(iconName)
+<i class="fa $iconName$ fa-4x"></i>
+\end
+
+\define fa5x(iconName)
+<i class="fa $iconName$ fa-5x"></i>
+\end
+
+\define fafw(iconName)
+<i class="fa $iconName$ fa-fw"></i>
+\end

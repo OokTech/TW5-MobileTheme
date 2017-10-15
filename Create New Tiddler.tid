@@ -1,0 +1,39 @@
+caption: New Tiddler
+title: $:/themes/OokTech/mobile/Create New Tiddler
+
+\define thisTiddlerTemplateButton()
+<$button
+  class='tc-btn-invisible'
+  message='tm-new-tiddler'
+  param=<<currentTiddler>>
+>
+  <$list
+    filter='[is[current]removeprefix[Tiddler Template - ]]'
+  >
+    <$view
+      field='title'
+    />
+  </$list>
+</$button>
+<br>
+\end
+
+''Select Template:''
+
+<ul>
+  <li>
+    <$button
+      class='tc-btn-invisible'
+      message='tm-new-tiddler'
+    >
+      No Template
+    </$button>
+  </li>
+  <$list
+    filter='[prefix[Tiddler Template - ]]'
+  >
+    <li>
+      <<thisTiddlerTemplateButton>>
+    </li>
+  </$list>
+</ul>

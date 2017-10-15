@@ -1,0 +1,13 @@
+caption: Control Panel Popout
+menu: Left
+order: 1
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/Menu Icon - Control Panel Popout
+
+<$macrocall
+  $name=PopoutMenuScrollable
+  Icon="""<<fa fa-gear>>"""
+  Name=ControlPanelPopout
+  Tiddler="$:/ControlPanel"
+  Tooltip="Control Panel"
+/>

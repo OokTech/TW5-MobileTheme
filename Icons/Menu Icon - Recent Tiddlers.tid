@@ -1,0 +1,12 @@
+caption: Recent Tiddlers
+order: 0
+tags: [[Menu Icon]]
+title: $:/themes/OokTech/mobile/icon/Recent Tiddlers
+
+<$macrocall
+  $name=PopoutMenuScrollable
+  Icon="""<<fa fa-clock-o>>"""
+  Name=RecentTiddlersPopoutMenu
+  Tiddler="$:/core/ui/SideBar/Recent"
+  Tooltip="Recent Tiddlers"
+/>

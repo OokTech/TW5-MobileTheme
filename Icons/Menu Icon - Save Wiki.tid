@@ -1,0 +1,7 @@
+caption: Save Wiki
+menu: Top Center
+order: 2
+tags: [[Menu Icon]] Visible
+title: $:/themes/OokTech/mobile/icon/Save Wiki
+
+{{$:/core/ui/Buttons/save-wiki}}

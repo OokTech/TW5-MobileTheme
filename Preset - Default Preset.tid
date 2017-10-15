@@ -1,0 +1,16 @@
+caption: Default
+tags: [[Mobile Theme Preset]]
+title: $:/theme/OokTech/mobile/Preset - Default
+type: application/json
+
+{
+    "$:/themes/OokTech/mobile/Icon Menu - Create New": "Left",
+    "$:/themes/OokTech/mobile/Menu Icon - Control Panel Popout": "Left",
+    "$:/themes/OokTech/mobile/icon/Search popout menu": "Left",
+    "$:/themes/OokTech/mobile/icon/More": "Left",
+    "$:/themes/OokTech/mobile/icon/Full Screen": "Top Left",
+    "$:/themes/OokTech/mobile/icon/Home": "Top Center",
+    "$:/themes/OokTech/mobile/icon/Wiki Title and Subtitle": "Top Center",
+    "$:/themes/OokTech/mobile/icon/Save Wiki": "Top Center",
+    "$:/themes/OokTech/mobile/icon/Refresh": "Top Right"
+}
